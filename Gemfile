@@ -1,16 +1,19 @@
-# A sample Gemfile
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'dm-core'
-gem 'dm-migrations'
-gem 'dm-sqlite-adapter'
+gem 'sinatra-activerecord'
+gem 'protected_attributes'
 gem 'sinatra-flash'
-gem 'sinatra-authentication'
+gem 'sqlite3'
 
+gem 'bcrypt'
+gem 'warden'
+
+gem 'rake'
 gem 'haml'
 
 group :development do
   gem 'shotgun'
   gem 'rubocop'
+  gem 'pry'
 end

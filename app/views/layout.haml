@@ -1,0 +1,22 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %title rememberthis
+  %body
+    %h1 RememberThis.Link
+    %div
+      - if !current_user
+        %a{href: '/login'}
+          Login
+        %a{href: '/signup'}
+          Signup
+      - else
+        %a{href: '/logout'}
+          Logout
+    - if flash[:success]
+      %div{style: 'color:green;'}
+        = flash[:sucess]
+    - if flash[:error]
+      %div{style: 'color:red;'}
+        = flash[:error]
+    = yield
