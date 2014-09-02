@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   self.primary_key = :id
   attr_accessible :id, :email, :password, :password_confirmation
   attr_accessor :password_confirmation
+
+  has_many :links
+  has_many :tags
+
   validates_uniqueness_of :email,
     :message => "Email address has already been used",
     :case_sensitive => false
