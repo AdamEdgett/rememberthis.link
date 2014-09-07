@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
     :if => :password_changed?,
     :message => "Passwords did not match"
 
+  validates_format_of :email,
+    :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+    :on => :create,
+    :message => "Invalid email address"
+
   before_save :hash_new_password, :if=>:password_changed?
   before_save :downcase_email
 
