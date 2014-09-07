@@ -1,2 +1,26 @@
-%p
-  = current_user.email
+%div
+  %p
+    = current_user.email
+  %div
+    %h2
+      Tags
+    - current_user.tags.each do |tag|
+      %p
+        = tag.text
+  %div
+    %h2
+      Links
+    - current_user.links.each do |link|
+      %p
+        = link.title
+  %form{action: "/links", method: "post"}
+    %div
+      Title:
+      %input{type: "text", name: "title"}
+    %div
+      URL:
+      %input{type: "text", name: "url"}
+    %div
+      Tags:
+      %input{type: "text", name: "tags"}
+    %input{type: "submit", value:"Save"}

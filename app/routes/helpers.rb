@@ -24,4 +24,8 @@ class App < Sinatra::Base
   def logged_in?
     session[:user].present?
   end
+
+  def user
+    params['user'].present? ? params['user'] : current_user
+  end
 end
