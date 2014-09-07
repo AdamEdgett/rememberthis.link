@@ -8,4 +8,13 @@ class Link < ActiveRecord::Base
     :message => "Link must have a URL"
   validates_presence_of :user,
     :message => "Link must have a user"
+
+  before_save :add_protocol
+
+  private
+  def add_protocol
+    if !url.start_with?("http")
+      self.url = url.prepend("http://")
+    end
+  end
 end
