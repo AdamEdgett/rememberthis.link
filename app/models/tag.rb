@@ -8,4 +8,8 @@ class Tag < ActiveRecord::Base
     :message => "Tag must have text"
   validates_presence_of :user,
     :message => "Tag must have a user"
+
+  validates_uniqueness_of :text, :scope => :user,
+    :message => "Cannot have duplicate tag",
+    :case_sensitive => false
 end
