@@ -5,13 +5,13 @@
     %h2
       Tags
     - current_user.tags.each do |tag|
-      %p
+      %a{href: "/tag/#{tag.text}"}
         = tag.text
   %div
     %h2
       Links
     - current_user.links.each do |link|
-      %p
+      %a{href: link.url}
         = link.title
   %form{action: "/links", method: "post"}
     %div

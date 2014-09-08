@@ -14,6 +14,12 @@ class App < Sinatra::Base
     redirect '/'
   end
 
+  get '/tag/:text' do
+    tag = Tag.find_by(text: params[:text], user: user)
+    links = Link.all.select { |l| l.tags.include?(tag) }
+    haml :tag, :locals => {links: links, tag: tag}
+  end
+
   post '/links' do
     tags = []
     if params.key?('tags') && params['tags'].present?
