@@ -16,4 +16,5 @@ group :development do
   gem 'shotgun'
   gem 'rubocop'
   gem 'pry'
+  gem 'annotate'
 end
