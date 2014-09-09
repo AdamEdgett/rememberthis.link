@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+
+Style/AlignArray:
+  Enabled: false
+
+Style/AlignHash:
+  Enabled: false
+
+Style/AlignParameters:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false

@@ -1,3 +1,4 @@
+# Logic for authentication
 class App < Sinatra::Base
   get '/signup' do
     not_login_required
@@ -48,16 +49,18 @@ class App < Sinatra::Base
   end
 
   post '/unauthenticated' do
-    session[:return_to] = env['warden.options'][:attempted_path] if session[:return_to].nil?
+    if session[:return_to].nil?
+      session[:return_to] = env['warden.options'][:attempted_path]
+    end
     puts env['warden.options'][:attempted_path]
     puts env['warden']
-    flash[:error] = env['warden'].message || "You must log in"
+    flash[:error] = env['warden'].message || 'You must log in'
     redirect '/login'
   end
 
   use Warden::Manager do |config|
-    config.serialize_into_session{|user| user.id }
-    config.serialize_from_session{|id| User.find(id) }
+    config.serialize_into_session(&:id)
+    config.serialize_from_session { |id| User.find(id) }
 
     config.scope_defaults :default,
       strategies: [:password],
@@ -65,7 +68,7 @@ class App < Sinatra::Base
     config.failure_app = self
   end
 
-  Warden::Manager.before_failure do |env,opts|
+  Warden::Manager.before_failure do |env|
     env['REQUEST_METHOD'] = 'POST'
   end
 
@@ -79,7 +82,7 @@ class App < Sinatra::Base
         session[:user] = user.id
         success!(user)
       else
-        fail!("Could not log in")
+        fail!('Could not log in')
       end
     end
   end

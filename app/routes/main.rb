@@ -1,9 +1,10 @@
 require_relative 'helpers'
 
+# Includes routes for main app functionality
 class App < Sinatra::Base
   get '/' do
     if logged_in?
-      haml :index, :locals => {current_user: current_user}
+      haml :index, locals: { current_user: current_user }
     else
       haml :login
     end
@@ -17,7 +18,7 @@ class App < Sinatra::Base
   get '/tag/:text' do
     tag = Tag.find_by(text: params[:text], user: user)
     links = Link.all.select { |l| l.tags.include?(tag) }
-    haml :tag, :locals => {links: links, tag: tag}
+    haml :tag, locals: { links: links, tag: tag }
   end
 
   post '/links' do
@@ -27,7 +28,10 @@ class App < Sinatra::Base
         tags.push(Tag.find_or_create_by(text: tag, user: user))
       end
     end
-    Link.create(title: params['title'], url: params['url'], user: user, tags: tags)
+    Link.create(title: params['title'],
+                url: params['url'],
+                user: user,
+                tags: tags)
     redirect '/'
   end
 end

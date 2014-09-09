@@ -1,3 +1,4 @@
+# Helper functions
 class App < Sinatra::Base
   def login_required
     if current_user
@@ -10,15 +11,11 @@ class App < Sinatra::Base
   end
 
   def not_login_required
-    if current_user
-      redirect '/'
-    end
+    redirect '/' if current_user
   end
 
   def current_user
-    if logged_in?
-      User.find(session[:user])
-    end
+    User.find(session[:user]) if logged_in?
   end
 
   def logged_in?
