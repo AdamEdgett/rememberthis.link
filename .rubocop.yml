@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - 'db/**/*'
+    - '**/*config.rb'
+    - 'node_modules/**/*'
 
 Style/AlignArray:
   Enabled: false
