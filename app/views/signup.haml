@@ -1,11 +1,3 @@
-%form{action: "/signup", method: "post"}
-  %div
-    Email:
-    %input{type: "text", name: "email"}
-  %div
-    Password:
-    %input{type: "password", name: "password"}
-  %div
-    Password Confirmation:
-    %input{type: "password", name: "password_confirmation"}
-  %input{type: "submit", value:"Signup"}
+%div{class: 'row'}
+  %div{class: 'col-md-6'}
+    = haml :'partials/signup-form'

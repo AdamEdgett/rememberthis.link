@@ -1,2 +1,7 @@
 *.db
 .bundle/config
+
+app/assets/css/
+
+node_modules/
+.sass-cache/

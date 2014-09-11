@@ -1,0 +1,13 @@
+!!!
+%html{lang: 'en'}
+  %head
+    = haml :'partials/head'
+    %link{href:'/css/landing.css', rel:'stylesheet', type:'text/css'}
+    %title RememberThis.Link
+
+  %body
+    %header
+      %div{class: 'container-fluid'}
+        %h1 RememberThis.Link
+    %div{class: 'container-fluid'}
+      = yield

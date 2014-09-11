@@ -2,7 +2,7 @@
 class App < Sinatra::Base
   get '/signup' do
     not_login_required
-    haml :signup
+    haml :signup, layout: :'layouts/landing'
   end
 
   post '/signup' do
@@ -25,7 +25,7 @@ class App < Sinatra::Base
 
   get '/login' do
     not_login_required
-    haml :login
+    haml :login, layout: :'layouts/landing'
   end
 
   post '/login' do

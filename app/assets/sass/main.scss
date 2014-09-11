@@ -1,0 +1,16 @@
+@import "compass/reset";
+
+@import "partials/base";
+@import "modules/colors";
+
+header {
+  div {
+    padding: 0;
+  }
+
+  .nav {
+    padding: 10px;
+    font-size: 1em;
+  }
+}
+

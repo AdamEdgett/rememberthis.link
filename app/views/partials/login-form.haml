@@ -1,0 +1,8 @@
+%h2
+  Login
+%form{role: 'form', action: '/login', method: 'post'}
+  %div{class: 'form-group'}
+    %input{class: 'form-control input-lg', type: 'email', name: 'email', placeholder: 'Email'}
+  %div{class: 'form-group'}
+    %input{class: 'form-control input-lg', type: 'password', name: 'password', placeholder: 'Password'}
+  %input{class: 'btn btn-default', type: 'submit', value:'Login'}

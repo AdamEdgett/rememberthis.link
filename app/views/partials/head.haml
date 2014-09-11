@@ -1,0 +1,9 @@
+%meta{charset:'UTF-8'}
+%meta{content:'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+%meta{content:'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0', name:'viewport'}
+%link{href:'http://fonts.googleapis.com/css?family=Open+Sans:400,300', rel:'stylesheet', type:'text/css'}
+%link{href:'http://fonts.googleapis.com/css?family=Lobster+Two', rel:'stylesheet', type:'text/css'}
+%link{rel:'stylesheet', href:'http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'}
+- if settings.development?
+  %script{src:'//localhost:3000/socket.io/socket.io.js'}
+  %script{src:'//192.168.1.223:3001/client/browser-sync-client.0.9.1.js'}

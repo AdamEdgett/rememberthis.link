@@ -4,9 +4,9 @@ require_relative 'helpers'
 class App < Sinatra::Base
   get '/' do
     if logged_in?
-      haml :index, locals: { current_user: current_user }
+      haml :home, locals: { current_user: current_user }
     else
-      haml :login
+      haml :landing, layout: :'layouts/landing'
     end
   end
 

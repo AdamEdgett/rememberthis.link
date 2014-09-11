@@ -1,0 +1,12 @@
+{
+  "name": "rememberthis.link",
+  "description": "Site for saving links",
+  "homepage": "http://rememberthis.link",
+  "repository": "adamedgett/rememberthis.link",
+  "author": "Adam Edgett",
+  "devDependencies": {
+    "gulp": "^3.8.1",
+    "gulp-compass": "^1.3.1",
+    "browser-sync": "^1.3.7"
+  }
+}
