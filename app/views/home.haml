@@ -18,13 +18,7 @@
       %input{type: 'submit', value:'Save', class: 'btn btn-default'}
   %div{class: 'col-md-8'}
     %h2 Links
-    - current_user.links.each do |link|
-      %a{href: link.url}
-        = link.title
+    = haml :'partials/link-list', locals: { links: current_user.links }
   %div{class: 'col-md-4'}
     %h2 Tags
-    %ul
-    - current_user.tags.each do |tag|
-      %li
-        %a{href: "/tag/#{tag.text}"}
-          \##{tag.text}
+    = haml :'partials/tag-list', locals: { tags: current_user.tags }
