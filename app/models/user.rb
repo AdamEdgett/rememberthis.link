@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :id, :email, :password, :password_confirmation
   attr_accessor :password_confirmation
 
-  has_many :links
-  has_many :tags
+  has_many :links, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   validates_uniqueness_of :email,
     message: 'Email address has already been used',
