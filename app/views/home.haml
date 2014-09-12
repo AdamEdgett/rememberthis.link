@@ -18,7 +18,7 @@
       %input{type: 'submit', value:'Save', class: 'btn btn-default'}
   %div{class: 'col-md-8'}
     %h2 Links
-    = haml :'partials/link-list', locals: { links: current_user.links }
+    = haml :'partials/link_list', locals: { links: current_user.links }
   %div{class: 'col-md-4'}
     %h2 Tags
-    = haml :'partials/tag-list', locals: { tags: current_user.tags }
+    = haml :'partials/tag_list', locals: { tags: current_user.tags }
