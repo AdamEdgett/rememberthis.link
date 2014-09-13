@@ -42,7 +42,7 @@ class App < Sinatra::Base
   post '/links' do
     tags = []
     if params.key?('tags') && params['tags'].present?
-      params['tags'].split(',').each do |tag|
+      params['tags'].scan(/\w+/).each do |tag|
         tags.push(Tag.find_or_create_by(text: tag, user: user))
       end
     end
