@@ -15,10 +15,28 @@ class App < Sinatra::Base
     redirect '/'
   end
 
-  get '/tag/:text' do
+  get '/tags/:text' do
     tag = Tag.find_by(text: params[:text], user: user)
     links = Link.all.select { |l| l.tags.include?(tag) }
     haml :tag, locals: { links: links, tag: tag }
+  end
+
+  post '/tags/:text' do
+    tag = Tag.find_by(text: params[:text], user: user)
+    tag.text = params[:new_text]
+    tag.save
+    redirect "/tags/#{params[:new_text]}"
+  end
+
+  get '/tags/:text/delete' do
+    tag = Tag.find_by(text: params[:text], user: user)
+    tag.destroy
+    redirect '/'
+  end
+
+  get '/tags/:text/edit' do
+    tag = Tag.find_by(text: params[:text], user: user)
+    haml :edit_tag, locals: { tag: tag }
   end
 
   post '/links' do

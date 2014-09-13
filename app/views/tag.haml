@@ -1,6 +1,9 @@
 %div
-  %h2
-    \##{tag.text}
-  - links.each do |link|
-    %a{href: link.url}
-      = link.title
+  %div{class: 'row'}
+    %div{class: 'title pull-left'}
+      %h2
+        \##{tag.text}
+    %div{class: 'pull-right'}
+      %a{href: "/tags/#{tag.text}/edit"} Edit
+  %div{class: 'row'}
+    = haml :'partials/link_list', locals: { links: links }

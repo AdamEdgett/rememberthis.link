@@ -1,0 +1,11 @@
+%div
+  %div{class: 'row'}
+    %div{class: 'title pull-left'}
+      %h2
+        \##{tag.text}
+    %div{class: 'pull-right'}
+      %a{href: "/tags/#{tag.text}/delete"} Delete
+  %form{role: 'form', action: "/tags/#{tag.text}", method: 'post'}
+    %div{class: 'form-group'}
+      %input{class: 'form-control input-lg', type: 'text', name: 'new_text', placeholder: 'Tag', value: tag.text}
+    %input{class: 'btn btn-default', type: 'submit', value:'Save'}
