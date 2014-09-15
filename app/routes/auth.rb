@@ -9,7 +9,7 @@ class App < Sinatra::Base
     new_user = User.create(params)
     if new_user.errors.present?
       flash[:error] = new_user.errors.messages.values.first.first
-      redirect '/signup'
+      redirect '/'
     else
       env['warden'].authenticate!
 
@@ -45,7 +45,7 @@ class App < Sinatra::Base
     env['warden'].logout
     flash[:success] = 'Successfully logged out'
     puts current_user
-    redirect '/login'
+    redirect '/'
   end
 
   post '/unauthenticated' do
@@ -55,7 +55,7 @@ class App < Sinatra::Base
     puts env['warden.options'][:attempted_path]
     puts env['warden']
     flash[:error] = env['warden'].message || 'You must log in'
-    redirect '/login'
+    redirect '/'
   end
 
   use Warden::Manager do |config|

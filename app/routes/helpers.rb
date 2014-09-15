@@ -5,7 +5,7 @@ class App < Sinatra::Base
       true
     else
       session[:return_to] = request.fullpath
-      redirect '/login'
+      redirect '/'
       false
     end
   end
