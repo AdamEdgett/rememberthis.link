@@ -4,6 +4,7 @@ class App < Sinatra::Base
     if current_user
       true
     else
+      session.delete(:user)
       session[:return_to] = request.fullpath
       redirect '/'
       false
@@ -19,7 +20,7 @@ class App < Sinatra::Base
   end
 
   def logged_in?
-    session[:user].present?
+    session[:user].present? && User.exists?(session[:user])
   end
 
   def user
