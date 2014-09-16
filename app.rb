@@ -19,5 +19,5 @@ class App < Sinatra::Base
   set :template_enginge, :haml
   set :environment, :development
   set :views, 'app/views'
-  set :public_folder, 'app/assets'
+  set :public_folder, 'public'
 end

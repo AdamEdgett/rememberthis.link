@@ -4,8 +4,8 @@ var compass = require('gulp-compass');
 var browserSync = require('browser-sync');
 
 var paths = {
-  sass: 'app/assets/sass/**/*.scss',
-  css: 'app/assets/css/*.css',
+  sass: 'public/sass/**/*.scss',
+  css: 'public/css/*.css',
   views: ['app/**/*.rb', 'app/views/**/*.haml']
 };
 
@@ -14,8 +14,8 @@ gulp.task('compass', function() {
   .pipe(compass({
     project: __dirname,
     config_file: 'config.rb',
-    css: 'app/assets/css',
-    sass: 'app/assets/sass'
+    css: 'public/css',
+    sass: 'public/sass'
   }));
 });
 
