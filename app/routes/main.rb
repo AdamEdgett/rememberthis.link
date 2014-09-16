@@ -11,17 +11,20 @@ class App < Sinatra::Base
   end
 
   post '/tags' do
+    login_required
     Tag.create(text: params['text'], user: user)
     redirect '/'
   end
 
   get '/tags/:text' do
+    login_required
     tag = Tag.find_by(text: params[:text], user: user)
     links = Link.all.select { |l| l.tags.include?(tag) }
     haml :tag, locals: { links: links, tag: tag }
   end
 
   post '/tags/:text' do
+    login_required
     tag = Tag.find_by(text: params[:text], user: user)
     tag.text = params[:new_text]
     tag.save
@@ -29,17 +32,20 @@ class App < Sinatra::Base
   end
 
   get '/tags/:text/delete' do
+    login_required
     tag = Tag.find_by(text: params[:text], user: user)
     tag.destroy
     redirect '/'
   end
 
   get '/tags/:text/edit' do
+    login_required
     tag = Tag.find_by(text: params[:text], user: user)
     haml :edit_tag, locals: { tag: tag }
   end
 
   post '/links' do
+    login_required
     tags = []
     if params.key?('tags') && params['tags'].present?
       params['tags'].scan(/\w+/).each do |tag|
