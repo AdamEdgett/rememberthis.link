@@ -1,3 +1,11 @@
 development:
   adapter: sqlite3
   database: app.db
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: rememberthis_link
+  pool: 5
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASS'] %>

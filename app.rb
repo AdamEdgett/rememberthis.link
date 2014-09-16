@@ -1,5 +1,7 @@
 $LOAD_PATH << File.dirname(__FILE__)
 
+require 'config/env'
+
 require 'sinatra/base'
 require 'sinatra/activerecord'
 require 'protected_attributes'
@@ -17,7 +19,6 @@ class App < Sinatra::Base
   use Rack::Session::Cookie, secret: 'asdfn284rn23em92e0d2k3d02d2n32t3'
 
   set :template_enginge, :haml
-  set :environment, :development
   set :views, 'app/views'
   set :public_folder, 'public'
 end
