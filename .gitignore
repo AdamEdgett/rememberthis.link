@@ -1,3 +1,5 @@
+config/env.rb
+
 *.db
 .bundle/config
 
