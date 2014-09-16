@@ -1,0 +1,6 @@
+%form{class: 'form-inline', role: 'form', action: "/tags/#{tag.text}", method: 'post'}
+  %div{class: 'input-group'}
+    %div{class: 'input-group-addon'}
+      \#
+    %input{class: 'form-control', type: 'text', name: 'new_text', placeholder: 'Tag', value: tag.text}
+  %input{class: 'btn btn-default', type: 'submit', value:'Save'}

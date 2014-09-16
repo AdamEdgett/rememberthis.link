@@ -1,24 +1,11 @@
 %div{class: 'row'}
   %div{class: 'col-md-12'}
-    %h2
-      Add a new link
-    %form{class: 'form-inline', role: 'form', action: '/links', method: 'post'}
-      %div{class: 'form-group'}
-        %label{class: 'sr-only', for: 'title-input'} Title
-        %input{class: 'form-control', id: 'title-input', type: 'text', name: 'title', placeholder: 'Title'}
-      %div{class: 'form-group'}
-        %label{class: 'sr-only', for: 'url-input'} URL
-        %input{class: 'form-control', id: 'url-input', type: 'text', name: 'url', placeholder: 'URL'}
-      %div{class: 'form-group'}
-        %label{class: 'sr-only', for: 'tags-input'} Tags
-        %div{class: 'input-group'}
-          %div{class: 'input-group-addon'}
-            \#
-          %input{class: 'form-control', id: 'tags-input', type: 'text', name: 'tags', placeholder: 'Tags'}
-      %input{type: 'submit', value:'Save', class: 'btn btn-default'}
-  %div{class: 'col-md-8'}
+    %h2 Add a new link
+    = haml :'forms/link/create'
+%div{class: 'row'}
+  %div{class: 'col-md-11'}
     %h2 Links
-    = haml :'partials/link_list', locals: { links: current_user.links }
-  %div{class: 'col-md-4'}
+    = haml :'partials/link/list', locals: { links: current_user.links }
+  %div{class: 'col-md-1 pull-right'}
     %h2 Tags
-    = haml :'partials/tag_list', locals: { tags: current_user.tags }
+    = haml :'partials/tag/list', locals: { tags: current_user.tags }

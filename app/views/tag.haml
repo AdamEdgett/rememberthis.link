@@ -6,4 +6,5 @@
     %div{class: 'pull-right'}
       %a{href: "/tags/#{tag.text}/edit"} Edit
   %div{class: 'row'}
-    = haml :'partials/link_list', locals: { links: links }
+    %div{class: 'col-md-12'}
+      = haml :'partials/link/list', locals: { links: links }
