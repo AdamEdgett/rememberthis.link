@@ -23,6 +23,12 @@ class App < Sinatra::Base
     haml :tag, locals: { links: links, tag: tag }
   end
 
+  get '/tags/:text/edit' do
+    login_required
+    tag = Tag.find_by(text: params[:text], user: user)
+    haml :edit_tag, locals: { tag: tag }
+  end
+
   post '/tags/:text' do
     login_required
     tag = Tag.find_by(text: params[:text], user: user)
@@ -38,20 +44,9 @@ class App < Sinatra::Base
     redirect '/'
   end
 
-  get '/tags/:text/edit' do
-    login_required
-    tag = Tag.find_by(text: params[:text], user: user)
-    haml :edit_tag, locals: { tag: tag }
-  end
-
   post '/links' do
     login_required
-    tags = []
-    if params.key?('tags') && params['tags'].present?
-      params['tags'].scan(/\w+/).each do |tag|
-        tags.push(Tag.find_or_create_by(text: tag, user: user))
-      end
-    end
+    tags = parse_tags(params['tags'])
     Link.create(title: params['title'],
                 url: params['url'],
                 user: user,

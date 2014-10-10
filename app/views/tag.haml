@@ -1,10 +1,11 @@
 %div
   %div{class: 'row'}
-    %div{class: 'title pull-left'}
+    %div{class: 'title col-md-4'}
       %h2
         \##{tag.text}
-    %div{class: 'pull-right'}
+    %div{class: 'col-md-1 pull-right'}
       %a{href: "/tags/#{tag.text}/edit"} Edit
   %div{class: 'row'}
     %div{class: 'col-md-12'}
+      %h3 Links
       = haml :'partials/link/list', locals: { links: links }

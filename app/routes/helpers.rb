@@ -26,4 +26,11 @@ class App < Sinatra::Base
   def user
     params['user'].present? ? params['user'] : current_user
   end
+
+  def parse_tags(tags)
+    tags.scan(/\w+/).map do |tag|
+      Tag.find_or_create_by(text: tag, user: user)
+    end
+  end
+
 end
