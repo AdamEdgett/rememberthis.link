@@ -3,9 +3,9 @@
     %h2 Add a new link
     = haml :'forms/link/create'
 %div{class: 'row'}
-  %div{class: 'col-md-11'}
-    %h2 Links
-    = haml :'partials/link/list', locals: { links: current_user.links }
-  %div{class: 'col-md-1 pull-right'}
+  %div{class: 'col-md-3'}
     %h2 Tags
     = haml :'partials/tag/list', locals: { tags: current_user.tags }
+  %div{class: 'col-md-9'}
+    %h2 Links
+    = haml :'partials/link/list', locals: { links: current_user.links }

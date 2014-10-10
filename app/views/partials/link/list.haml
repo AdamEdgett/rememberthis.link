@@ -1,5 +1,7 @@
+%ul
 - links.each do |link|
-  %a{href: link.url, target:'_blank'}
-    = link.title
-  %a{href: "/links/#{link.id}", target: '_blank', class: 'edit'}
-    edit
+  %li
+    %a{href: link.url, target:'_blank', class: 'link'}
+      = link.title
+    %a{href: "/links/#{link.id}", target: '_blank', class: 'edit'}
+      edit
