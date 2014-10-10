@@ -1,0 +1,13 @@
+%div
+  %div{class: 'row'}
+    %div{class: 'title col-md-4'}
+      %h2 #{link.title}
+      %a{href: link.url, target:'_blank'}
+        #{link.url}
+    %div{class: 'col-md-1 pull-right'}
+      %a{href: "/links/#{link.id}/edit"} Edit
+  %div{class: 'row'}
+    %div{class: 'col-md-12'}
+      %h3 Tags
+      %ul
+        = haml :'partials/tag/list', locals: { tags: link.tags }

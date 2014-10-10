@@ -1,0 +1,14 @@
+%form{class: 'form-inline', role: 'form', action: "/links/#{link.id}", method: 'post'}
+  %div{class: 'form-group'}
+    %label{for: 'title-input'} Title
+    %input{class: 'form-control', id: 'title-input', type: 'text', name: 'title', placeholder: 'Title', value: link.title }
+  %div{class: 'form-group'}
+    %label{for: 'url-input'} URL
+    %input{class: 'form-control', id: 'url-input', type: 'text', name: 'url', placeholder: 'URL', value: link.url }
+  %div{class: 'form-group'}
+    %label{for: 'tags-input'} Tags
+    %div{class: 'input-group'}
+      %div{class: 'input-group-addon'}
+        \#
+      %input{class: 'form-control', id: 'tags-input', type: 'text', name: 'tags', placeholder: 'Tags', value: link.tags.map(&:text).join(' ') }
+  %input{type: 'submit', value:'Save', class: 'btn btn-default'}

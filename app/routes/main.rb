@@ -53,4 +53,32 @@ class App < Sinatra::Base
                 tags: tags)
     redirect '/'
   end
+
+  get '/links/:id' do
+    login_required
+    link = Link.find_by(id: params[:id], user: user)
+    haml :link, locals: { link: link }
+  end
+
+  get '/links/:id/edit' do
+    login_required
+    link = Link.find_by(id: params[:id], user: user)
+    haml :edit_link, locals: { link: link }
+  end
+
+  post '/links/:id' do
+    login_required
+    link = Link.find_by(id: params[:id], user: user)
+    link.title = params[:new_title]
+    link.url = params[:new_url]
+    link.tags = parse_tags(params[:tags])
+    link.save
+  end
+
+  get '/links/:id/delete' do
+    login_required
+    link = Link.find_by(id: params[:id], user: user)
+    link.destroy
+    redirect '/'
+  end
 end
